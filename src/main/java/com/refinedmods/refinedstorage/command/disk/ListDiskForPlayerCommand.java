@@ -12,10 +12,11 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.text.StringTextComponent;
 
 import java.util.Map;
+import java.util.UUID;
 
 public class ListDiskForPlayerCommand implements Command<CommandSource> {
     public static ArgumentBuilder<CommandSource, ?> register() {
-        return Commands.argument("player", EntityArgument.player()).executes(new ListDiskForPlayerCommand());
+        return Commands.argument("UUID", UUIDArgument.getUuid()).executes(new ListDiskForPlayerCommand());
     }
 
     @Override
