@@ -8,7 +8,7 @@ jobs:
         strategy:
             matrix:
                 java: [
-                        17
+                        8
                 ]
                 os: [ ubuntu-latest ]
         runs-on: ${{ matrix.os }}
@@ -37,7 +37,7 @@ jobs:
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             - name: Upload build artifacts
-              if: ${{ runner.os == 'Linux' && matrix.java == '17' }}
+              if: ${{ runner.os == 'Linux' && matrix.java == '8' }}
               uses: actions/upload-artifact@v2
               with:
                   name: Artifacts
