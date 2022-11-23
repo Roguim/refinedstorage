@@ -16,12 +16,12 @@ import java.util.UUID;
 
 public class ListDiskForPlayerCommand implements Command<CommandSource> {
     public static ArgumentBuilder<CommandSource, ?> register() {
-        return Commands.argument("UUID", UUIDArgument.UUID()).executes(new ListDiskForPlayerCommand());
+        return Commands.argument("UUID", UUIDArgument.func_239194_a_()).executes(new ListDiskForPlayerCommand());
     }
 
     @Override
     public int run(CommandContext<CommandSource> context) throws CommandSyntaxException {
-        UUID player = UUIDArgument.getUUID((CommandContext)context, "uuid");
+        UUID player = UUIDArgument.func_239195_a_((CommandContext)context, "uuid");
 
         API.instance().getStorageDiskManager(context.getSource().getWorld())
             .getAll()
