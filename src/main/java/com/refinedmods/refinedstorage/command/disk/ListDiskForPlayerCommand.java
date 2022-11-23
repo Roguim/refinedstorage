@@ -7,7 +7,7 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.refinedmods.refinedstorage.apiimpl.API;
 import net.minecraft.command.CommandSource;
 import net.minecraft.command.Commands;
-import net.minecraft.command.arguments.UUIDArgument;
+import net.minecraft.command.arguments.UuidArgument;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.text.StringTextComponent;
 
@@ -16,12 +16,12 @@ import java.util.UUID;
 
 public class ListDiskForPlayerCommand implements Command<CommandSource> {
     public static ArgumentBuilder<CommandSource, ?> register() {
-        return Commands.argument("UUID", UUIDArgument.getUuid()).executes(new ListDiskForPlayerCommand());
+        return Commands.argument("UUID", UuidArgument.uuid()).executes(new ListDiskForPlayerCommand());
     }
 
     @Override
     public int run(CommandContext<CommandSource> context) throws CommandSyntaxException {
-        UUID player = UUIDArgument.getUuid(context, "uuid");
+        UUID player = UuidArgument.getUuid(context, "uuid");
 
         API.instance().getStorageDiskManager(context.getSource().getWorld())
             .getAll()
