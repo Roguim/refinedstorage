@@ -21,13 +21,13 @@ public class ListDiskForPlayerCommand implements Command<CommandSource> {
 
     @Override
     public int run(CommandContext<CommandSource> context) throws CommandSyntaxException {
-        UUID player = UUIDArgument.func_239195_a_((CommandContext)context, "uuid");
-
+        UUID player = UUIDArgument.func_239195_a_(context, "uuid");
+        
         API.instance().getStorageDiskManager(context.getSource().getWorld())
             .getAll()
             .entrySet()
             .stream()
-            .filter(entry -> player.equals(entry.getValue().getOwner()))
+            .filter(entry -> player.equals(entry.getValue().getOwner().toString()))
             .map(Map.Entry::getKey)
             .forEach(id -> context.getSource().sendFeedback(new StringTextComponent(id.toString()), false));
 
